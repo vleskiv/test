@@ -3,6 +3,7 @@
 
   - name: NTP Install
     become: true
+    command: cat /etc/hostname
     yum:
       name: ntp
       state: present
