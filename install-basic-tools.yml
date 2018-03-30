@@ -2,7 +2,7 @@
   tasks:
 
   - name: Check host
-    shell: cat /etc/hostname && whoami && pwd && ip address
+    shell: cat /etc/hostname && whoami && pwd
     register: myhost
   - debug: msg="{{myhost.stdout}}"
   
