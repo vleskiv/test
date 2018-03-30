@@ -6,7 +6,6 @@
     yum:
       name: ntp
       state: present
-    register: ntp_installed
 
   - name: NTP Enable and start service
     become: true
@@ -14,4 +13,3 @@
       enabled: yes
       name: ntpd
       state: started
-    when: ntp_installed is succeeded
