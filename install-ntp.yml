@@ -1,9 +1,11 @@
 - hosts: localhost
   tasks:
 
+  - name: Check host
+    command: cat /etc/hostname
+    
   - name: NTP Install
     become: true
-    command: cat /etc/hostname
     yum:
       name: ntp
       state: present
