@@ -14,4 +14,4 @@
       enabled: yes
       name: ntpd
       state: started
-    when: ntp_installed|succeeded
+    when: ntp_installed is succeeded
