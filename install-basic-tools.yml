@@ -1,5 +1,5 @@
-
-- tasks:
+- hosts: localhost
+  tasks:
 
   - name: Check host
     shell: cat /etc/hostname && whoami && pwd && ip address
