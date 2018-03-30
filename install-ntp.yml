@@ -2,7 +2,9 @@
   tasks:
 
   - name: Check host
-    command: cat /etc/hostname
+    shell: cat /etc/hostname
+    register: myhost
+  - debug: msg="{{myhost.stdout}}"
     
   - name: NTP Install
     become: true
