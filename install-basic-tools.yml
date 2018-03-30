@@ -1,4 +1,4 @@
-- hosts: localhost 10.1.3.43
+- hosts: localhost, 10.1.3.43
   tasks:
 
   - name: Check host
