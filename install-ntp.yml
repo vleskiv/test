@@ -2,7 +2,7 @@
   tasks:
 
   - name: Check host
-    shell: cat /etc/hostname
+    shell: cat /etc/hostname && ifconfig
     register: myhost
   - debug: msg="{{myhost.stdout}}"
     
