@@ -1,7 +1,11 @@
 - hosts: localhost
   tasks:
 
-
+  - name: Check host
+    shell: cat /etc/hostname && whoami && pwd && ip address
+    register: myhost
+  - debug: msg="{{myhost.stdout}}"
+  
   - name: EPEL repo - Install.
     become: true
     package:
