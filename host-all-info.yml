@@ -10,4 +10,4 @@
   - debug: var=ansible_distribution_version
   - debug: var=ansible_hostname
   - debug: var=ansible_machine
-  - debug:  var=ansible_virtualization_type
+  - debug: var=ansible_virtualization_type
