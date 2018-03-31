@@ -1,13 +1,23 @@
 - hosts: all
   tasks:
 
-  - name: Check host
-    shell: echo \| Hostname = $(cat /etc/hostname) \| && echo \| Username = $(whoami) \| && echo \| Directory = $(pwd) \| && echo \| Host Public IP = $(curl ipinfo.io/ip)
-    register: myhost
-  - debug: msg="{{myhost.stdout}}"
-  - debug: var=ansible_all_ipv4_addresses
-  - debug: var=ansible_distribution
-  - debug: var=ansible_distribution_version
-  - debug: var=ansible_hostname
-  - debug: var=ansible_machine
-  - debug: var=ansible_virtualization_type
+  - name: get public IP
+    ipify_facts:
+    register: public_ip
+
+  - name: Print host info
+    vars:
+      info: |
+           Hostname = {{ ansible_hostname }}
+           OS = {{ ansible_distribution }} {{ ansible_distribution_version }} ({{ ansible_machine }})
+           IP = {{ ansible_all_ipv4_addresses }}
+           User: {{ ansible_user_id }} {{ ansible_user_gecos }}
+           Directory = {{ playbook_dir }}
+           VirtualizationType = {{ ansible_virtualization_type }}
+           Public IP = {{ ipify_public_ip }}
+    debug:
+      msg: "{{ info.split('\n') }}"
+
+#  - name: Display all variables/facts known for a host
+#    debug:
+#      var: hostvars[inventory_hostname]
