@@ -2,6 +2,12 @@
   tasks:
 
   - name: Check host
-    shell: echo \| Hostname = $(cat /etc/hostname) \| && echo \| Username = $(whoami) \| && echo \| Directory = $(pwd) \| && echo \| Host IPs = $(ifconfig|grep inet|egrep -v "127|inet6"|awk '{print $2}') \| $(ifconfig)
+    shell: echo \| Hostname = $(cat /etc/hostname) \| && echo \| Username = $(whoami) \| && echo \| Directory = $(pwd) \| && echo \| Host Public IP = $(curl ipinfo.io/ip)
     register: myhost
   - debug: msg="{{myhost.stdout}}"
+  - debug: var=ansible_all_ipv4_addresses
+  - debug: var=ansible_distribution
+  - debug: var=ansible_distribution_version
+  - debug: var=ansible_hostname
+  - debug: var=ansible_machine
+  - debug:  var=ansible_virtualization_type
