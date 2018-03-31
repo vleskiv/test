@@ -1,8 +1,9 @@
 - hosts: all
+  no_log: True
   tasks:
 
   - name: get public IP
-    no_log: True
+    
     ipify_facts:
     register: public_ip
 
