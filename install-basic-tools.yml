@@ -1,4 +1,4 @@
-- hosts: localhost, 10.1.3.43
+- hosts: 10.1.3.43
   tasks:
 
   - name: Check host
@@ -26,5 +26,5 @@
       - mc
       - wget
       - htop
-    when: epel_installed|succeeded
+    when: epel_installed is succeeded
 
