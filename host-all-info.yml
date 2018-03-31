@@ -2,6 +2,6 @@
   tasks:
 
   - name: Check host
-    shell: echo \| Hostname = $(cat /etc/hostname) \| && echo \| Username = $(whoami) \| && echo \| Directory = $(pwd) \| && echo \| Host IPs = $(ifconfig|grep inet|egrep -v "127|inet6"|awk '{print $2}') \| $(ip address)
+    shell: echo \| Hostname = $(cat /etc/hostname) \| && echo \| Username = $(whoami) \| && echo \| Directory = $(pwd) \| && echo \| Host IPs = $(ifconfig|grep inet|egrep -v "127|inet6"|awk '{print $2}') \| $(ip address) 11111111111111111111111111111111111
     register: myhost
   - debug: msg="{{myhost.stdout}}"
